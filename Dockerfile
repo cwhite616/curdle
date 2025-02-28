@@ -2,15 +2,21 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 
+# Install pnpm
+RUN npm install -g pnpm
+
 # Copy package files
-COPY package.json package-lock.json ./
+COPY pnpm-lock.yaml package.json ./
 
 # Install dependencies
-RUN npm ci
+RUN pnpm install --frozen-lockfile
 
 # Stage 2: Builder
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Install pnpm
+RUN npm install -g pnpm
 
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
@@ -18,7 +24,7 @@ COPY . .
 
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED 1
-RUN npm run build
+RUN pnpm build
 
 # Stage 3: Runner
 FROM node:20-alpine AS runner
