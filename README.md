@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Curdle 🥛
 
-## Getting Started
+A daily milk dating game! Test your knowledge of milk history by guessing the secret code that consists of milk fat percentages, and a date from milk history.
 
-First, run the development server:
+## How to Play
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Every day, there's a new secret code consisting of:
+- 3 milk fat percentages (0-100%)
+- A month
+- A day (1-31)
+- A year (1886-present)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You have 6 chances to guess the correct combination. After each guess, you'll get feedback:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- For numbers (milk fat % and dates):
+  - 🟩 Green: Correct digit in the correct position
+  - 🟨 Yellow: Correct digit in the wrong position
+  - ⬛ Black: Digit not in the number
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- For months:
+  - 🟩 Green: Correct month
+  - 🟨 Yellow: Within one month of the correct month
+  - ⬛ Black: More than one month away
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
+- Node.js 18+
+- pnpm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Setup
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+3. Run the development server:
+   ```bash
+   pnpm dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Technologies Used
+- Next.js 14
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT
